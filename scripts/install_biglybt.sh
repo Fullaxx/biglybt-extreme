@@ -34,5 +34,5 @@ fi
 chown ${SUDO_UID}:${SUDO_GID} /opt
 sudo -u ${SUDO_USER} app_java_home="/usr/lib/jvm/java-${BBTJAVAVERS}-openjdk-amd64/" ${BBTINSTSCR} ${BBTQUIET} -dir /opt/biglybt
 rm ${BBTINSTSCR}
-/app/scripts/install_biglybt-3.2.0.0-extreme.sh
+/app/scripts/install_extreme_mod.sh
 chown -R ${SUDO_UID}:${SUDO_GID} /opt/biglybt
