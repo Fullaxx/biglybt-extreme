@@ -26,5 +26,6 @@ if [ ! -r ${HOME}/.biglybt/biglybt.config ]; then
 fi
 
 if [ -n "${USER}" ]; then
-  chown -R ${USER}:${GROUP} ${HOME} /data || bail "chown -R ${USER}:${GROUP} ${HOME} /data"
+  MYGID=`getent passwd ${USER} | cut -d: -f4`
+  chown -R ${USER}:${MYGID} ${HOME} /data || bail "chown -R ${USER}:${MYGID} ${HOME} /data"
 fi
