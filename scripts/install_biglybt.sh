@@ -1,5 +1,13 @@
 #!/bin/bash
 
+bail()
+{
+  ERRMSG="FAILED: $1"
+  >&2 echo "${ERRMSG}"
+  xmessage "${ERRMSG}" &
+  exit 1
+}
+
 set -e
 
 BBTJAVAVERS=${BBTJAVAVERS:-11}
@@ -34,5 +42,4 @@ fi
 chown ${SUDO_UID}:${SUDO_GID} /opt
 sudo -u ${SUDO_USER} app_java_home="/usr/lib/jvm/java-${BBTJAVAVERS}-openjdk-amd64/" ${BBTINSTSCR} ${BBTQUIET} -dir /opt/biglybt
 rm ${BBTINSTSCR}
-/app/scripts/install_extreme_mod.sh
-chown -R ${SUDO_UID}:${SUDO_GID} /opt/biglybt
+sudo -u ${SUDO_USER} /app/scripts/install_extreme_mod.sh || bail "FAILED: /app/scripts/install_extreme_mod.sh"
