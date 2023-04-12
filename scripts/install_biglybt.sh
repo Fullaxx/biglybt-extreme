@@ -38,6 +38,10 @@ else
   chmod +x ${BBTINSTSCR}
 fi
 
+# We must remove any extreme java runtime patches before installing BiglyBT
+export HOME=`getent passwd ${SUDO_USER} | cut -d: -f6`
+rm -f ${HOME}/.biglybt/java.vmoptions
+
 # Install BiglyBT
 chown ${SUDO_UID}:${SUDO_GID} /opt
 sudo -u ${SUDO_USER} app_java_home="/usr/lib/jvm/java-${BBTJAVAVERS}-openjdk-amd64/" ${BBTINSTSCR} ${BBTQUIET} -dir /opt/biglybt
