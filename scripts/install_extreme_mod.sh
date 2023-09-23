@@ -4,12 +4,24 @@ set -e
 
 patch_java_runtime()
 {
-  echo "--patch-module=java.base=ghostfucker_utils.jar" >>$1
-  echo "--add-exports=java.base/sun.net.www.protocol=ALL-UNNAMED" >>$1
-  echo "--add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED" >>$1
-  echo "--add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED" >>$1
-  echo "--add-opens=java.base/java.net=ALL-UNNAMED" >>$1
-  echo "-Dorg.glassfish.jaxb.runtime.v2.bytecode.ClassTailor.noOptimize=true" >>$1
+  if ! grep -q 'patch-module=java.base=ghostfucker_utils.jar' $1; then
+    echo "--patch-module=java.base=ghostfucker_utils.jar" >>$1
+  fi
+  if ! grep -q 'add-exports=java.base/sun.net.www.protocol=ALL-UNNAMED' $1; then
+    echo "--add-exports=java.base/sun.net.www.protocol=ALL-UNNAMED" >>$1
+  fi
+  if ! grep -q 'add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED' $1; then
+    echo "--add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED" >>$1
+  fi
+  if ! grep -q 'add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED' $1; then
+    echo "--add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED" >>$1
+  fi
+  if ! grep -q 'add-opens=java.base/java.net=ALL-UNNAMED' $1; then
+    echo "--add-opens=java.base/java.net=ALL-UNNAMED" >>$1
+  fi
+  if ! grep -q 'org.glassfish.jaxb.runtime.v2.bytecode.ClassTailor.noOptimize=true' $1; then
+    echo "-Dorg.glassfish.jaxb.runtime.v2.bytecode.ClassTailor.noOptimize=true" >>$1
+  fi
   echo >>$1
 }
 
