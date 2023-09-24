@@ -38,15 +38,6 @@ Also, if biglybt.config is found in /config, it will be copied to $HOME/.biglybt
     `-- processing - BiglyBT will use this for processing incomplete downloads
 ```
 
-## JAVA Options
-Optional: Choose a different version of Java \
-Default: 11
-```
--e BBTJAVAVERS='8'
--e BBTJAVAVERS='11'
--e BBTJAVAVERS='17'
-```
-
 ## BiglyBT Installer Options
 Optional: Disable the automated quiet install \
 Default: automatic quiet install
