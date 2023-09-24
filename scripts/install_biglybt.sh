@@ -10,9 +10,15 @@ bail()
 
 set -e
 
-BBTJAVAVERS=${BBTJAVAVERS:-11}
+BBTJAVAVERS=${BBTJAVAVERS:-17}
 DEBIAN_FRONTEND="noninteractive"
 BBTINSTSCR="/tmp/BiglyBT_Installer.sh"
+
+# Extreme Mod 3.4.0.0 requires Java 15+
+if [ "${BBTJAVAVERS}" != "17" ]; then
+  BBTJAVAVERS="17"
+  xmessage "BBTJAVAVERS is being hard-coded to 17" &
+fi
 
 if [ "${BBTGUIINSTALL}" == "1" ]; then
   OPENJDKPKG="openjdk-${BBTJAVAVERS}-jre"
