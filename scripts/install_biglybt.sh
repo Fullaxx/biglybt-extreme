@@ -30,7 +30,8 @@ fi
 
 # Install java
 apt-get update
-apt-get install -y --no-install-recommends ${OPENJDKPKG} webkit2gtk-driver libjna-java unzip
+apt-get install -y --no-install-recommends ${OPENJDKPKG} webkit2gtk-driver libjna-java unzip \
+    fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
 if grep -q '^assistive_technologies' /etc/java-${BBTJAVAVERS}-openjdk/accessibility.properties; then
   sed -e 's/^assistive_technologies/#assistive_technologies/' -i /etc/java-${BBTJAVAVERS}-openjdk/accessibility.properties
 fi
