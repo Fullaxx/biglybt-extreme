@@ -10,15 +10,10 @@ bail()
 
 set -e
 
-BBTJAVAVERS=${BBTJAVAVERS:-17}
+# Extreme Mod 3.4.0.0 requires Java 21
+BBTJAVAVERS=21
 DEBIAN_FRONTEND="noninteractive"
 BBTINSTSCR="/tmp/BiglyBT_Installer.sh"
-
-# Extreme Mod 3.4.0.0 requires Java 15+
-if [ "${BBTJAVAVERS}" != "17" ]; then
-  BBTJAVAVERS="17"
-  xmessage "BBTJAVAVERS is being hard-coded to 17" &
-fi
 
 if [ "${BBTGUIINSTALL}" == "1" ]; then
   OPENJDKPKG="openjdk-${BBTJAVAVERS}-jre"
@@ -28,7 +23,12 @@ else
   BBTQUIET="-q"
 fi
 
-# Install java
+# Add Java PPA (thanks to V3semir)
+apt-get update
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:openjdk-r/ppa
+
+# Install Java
 apt-get update
 apt-get install -y --no-install-recommends ${OPENJDKPKG} webkit2gtk-driver libjna-java unzip \
     fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
