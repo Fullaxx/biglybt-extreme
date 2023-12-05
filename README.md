@@ -6,7 +6,7 @@
 ## Software
 * [BiglyBT](https://www.biglybt.com/) - A java-based bittorrent application
 * [openvpn](https://openvpn.net/)
-* [Extreme Mod](https://www.sb-innovation.de/showthread.php?35648-BiglyBT-Extreme-Mod-by-SB-Innovation-3-4-0-0-Beta-rev1)
+* [Extreme Mod](https://www.sb-innovation.de/showthread.php?35697-BiglyBT-Extreme-Mod-by-SB-Innovation-3-5-0-0-Beta)
 
 ## Get the image from Docker Hub or build it locally
 ```

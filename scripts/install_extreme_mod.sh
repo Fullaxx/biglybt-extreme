@@ -27,7 +27,7 @@ patch_java_runtime()
 
 # Install Extreme Mod
 cd /opt/biglybt
-unzip -o /app/BiglyBT_3.4.0.0_20230921.zip
+unzip -o /app/BiglyBT_3.5.0.0_20231112.zip
 
 # Adjust JavaVM runtime @ ${HOME}/.biglybt/java.vmoptions
 patch_java_runtime "${HOME}/.biglybt/java.vmoptions"
